@@ -1,0 +1,28 @@
+[model]
+name = "dgcmfnet_V2"
+num_classes = 4
+num_modalities = 4
+base_ch = 8
+norm_affine = false
+align_corners = true
+
+# Leave-one-out ablation: remove CG-GFM; retain FG-GIM and FDFM.
+fg_gim_stages = [2, 3, 4]
+fg_gim_embed_dims = [64, 128, 256]
+fg_gim_num_heads = 4
+fg_gim_pool_sizes = [[8, 8, 8], [8, 8, 8], [8, 8, 8]]
+fg_gim_window_size = [3, 3, 3]
+fg_gim_auxiliary_skip = true
+fg_gim_modality_aware = true
+fg_gim_relation_bias = true
+fg_gim_edge_mode = "all"
+use_cg_gfm = false
+skip_fusion = "concat"
+dropout = 0.0
+unet_bottleneck_dropout = 0.2
+decoder_type = "frequency_guided"
+decoder_frequency_position = "decoder_feature"
+decoder_frequency_kernel_size = 3
+decoder_frequency_stage_mapping = [[0, 3], [1, 4], [2, 5]]
+decoder_frequency_gate_mode = "residual"
+decoder_frequency_gate_init_bias = 0.0

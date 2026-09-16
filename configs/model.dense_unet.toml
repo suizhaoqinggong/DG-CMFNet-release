@@ -1,0 +1,13 @@
+[model]
+name = "dense_unet"
+num_classes = 4
+num_modalities = 4
+base_ch = 12
+channel_multipliers = [1, 2, 4, 8, 16]
+norm = "instance_norm"
+dropout = 0.0
+dense_layers = 4
+dense_growth_rate = 8
+
+[task]
+loss = "dc_and_ce"

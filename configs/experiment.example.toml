@@ -1,0 +1,41 @@
+[experiment]
+name = "example-experiment"
+seed = 42
+threshold = 0.5
+class_names = ["A", "B", "C", "D", "E"]
+
+[data]
+adapter = "dummy"
+num_samples = 2000
+input_dim = 128
+batch_size = 64
+num_workers = 0
+val_ratio = 0.2
+test_ratio = 0.2
+
+[task]
+name = "classification"
+loss = "bce"
+
+[optimizer]
+name = "adam"
+lr = 0.001
+weight_decay = 1e-4
+
+[trainer]
+epochs = 20
+patience = 5
+device = "cpu"  # use "auto" to detect CUDA/MPS; "cpu" is safest for templates
+amp = false
+grad_clip_norm = 1.0
+
+[metrics.params.accuracy]
+[metrics.params.precision_recall_f1]
+average = "macro"
+
+[checkpoint]
+monitor = "val_loss"
+mode = "min"
+
+[output]
+root_dir = "runs"

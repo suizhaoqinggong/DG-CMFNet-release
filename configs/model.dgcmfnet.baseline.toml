@@ -1,0 +1,12 @@
+[model]
+name = "dgcmfnet"
+num_classes = 4
+num_modalities = 4
+base_ch = 8
+
+# Baseline ablation: disable the proposed modules.
+fg_gim_stages = []
+use_cg_gfm = false
+decoder_type = "standard"
+dropout = 0.0
+unet_bottleneck_dropout = 0.2

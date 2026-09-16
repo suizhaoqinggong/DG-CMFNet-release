@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: DG-CMFNet
+message: If you use this software, please cite it and the associated paper.
+type: software
+authors:
+  - family-names: Chen
+    given-names: Jiahao
+repository-code: https://github.com/suizhaoqinggong/DG-CMFNet
+license: MIT

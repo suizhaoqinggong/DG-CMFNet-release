@@ -1,0 +1,17 @@
+[model]
+name = "nnformer"
+num_classes = 4
+num_modalities = 4
+crop_size = [128, 128, 128]
+embedding_dim = 96
+depths = [2, 2, 2, 2]
+num_heads = [3, 6, 12, 24]
+patch_size = [4, 4, 4]
+window_size = [4, 4, 8, 4]
+deep_supervision = false
+drop_rate = 0.0
+attn_drop_rate = 0.0
+drop_path_rate = 0.2
+
+[task]
+loss = "dc_and_ce"

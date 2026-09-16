@@ -1,0 +1,11 @@
+[model]
+name = "resunet_2d"
+num_classes = 4
+num_modalities = 4
+# The reference topology uses [64, 128, 256, 512]. Half-width keeps this
+# slice-batch baseline practical on one 24 GB GPU.
+filters = [32, 64, 128, 256]
+eval_slice_chunk_size = 16
+
+[task]
+loss = "dc_and_ce"

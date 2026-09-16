@@ -1,0 +1,36 @@
+[model]
+name = "vtunet"
+num_classes = 4
+num_modalities = 4
+
+# External VT-UNet source tree. The adapter only uses the network definition;
+# DG-CMFNet still owns data loading, losses, metrics, checkpoints, and logging.
+source_root = ""
+
+# This VT-UNet implementation hard-codes the decoder depth for 128^3 BraTS
+# patches, so keep this aligned with configs/experiment.brats.toml crop_size.
+img_size = [128, 128, 128]
+patch_size = [4, 4, 4]
+strict_img_size = true
+
+# VT-UNet small configuration.
+embed_dim = 48
+depths = [2, 2, 2, 1]
+depths_decoder = [1, 2, 2, 2]
+num_heads = [3, 6, 12, 24]
+window_size = [7, 7, 7]
+mlp_ratio = 4.0
+qkv_bias = true
+drop_rate = 0.0
+attn_drop_rate = 0.0
+drop_path_rate = 0.2
+patch_norm = true
+use_checkpoint = false
+
+# The remote VT-UNet tree currently has no pretrained checkpoint. Set a real
+# path and flip load_pretrain to true if you later add the Swin checkpoint.
+pretrain_ckpt = ""
+load_pretrain = false
+
+[task]
+loss = "dc_and_ce"

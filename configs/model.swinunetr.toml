@@ -1,0 +1,31 @@
+[model]
+name = "swinunetr"
+num_classes = 4
+num_modalities = 4
+
+# Keep this aligned with configs/experiment.brats.toml crop_size.
+img_size = [128, 128, 128]
+strict_img_size = true
+
+# MONAI Swin UNETR defaults matching the Swin-UNETR baseline scale.
+feature_size = 48
+depths = [2, 2, 2, 2]
+num_heads = [3, 6, 12, 24]
+patch_size = [2, 2, 2]
+window_size = [7, 7, 7]
+norm_name = "instance"
+drop_rate = 0.0
+attn_drop_rate = 0.0
+dropout_path_rate = 0.0
+normalize = true
+use_checkpoint = true
+spatial_dims = 3
+downsample = "merging"
+use_v2 = false
+
+# Set a full or partially matching MONAI checkpoint path to warm-start.
+pretrained_path = ""
+strict_pretrained = false
+
+[task]
+loss = "dc_and_ce"

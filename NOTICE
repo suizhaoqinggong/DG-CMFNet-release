@@ -1,0 +1,19 @@
+Third-party comparison models
+=============================
+
+This repository includes thin adapters for publicly released segmentation
+networks used as paper baselines. Those upstream codebases are not vendored
+here. Obtain them from their original authors and respect their licenses:
+
+- TransBTS
+- NestedFormer
+- Slim UNETR
+- SegMamba / SegMamba-V2
+- nnMamba
+- U-Mamba
+- VT-UNet
+- nnFormer (standalone reimplementation used for comparison)
+- nnU-Net / SwinUNETR / MONAI components used by optional extras
+
+BraTS data must be requested from the challenge organizers and is not
+included in this repository.

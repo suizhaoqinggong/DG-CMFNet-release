@@ -1,0 +1,13 @@
+[model]
+name = "unet"
+num_classes = 4
+num_modalities = 4
+
+# Ronneberger et al. U-Net lifted to 3D: 64-128-256-512-1024 channels,
+# two convolutions per level, four pooling/upsampling stages, skip concat,
+# and no normalisation layers. Conv3d uses same padding to preserve 128^3
+# logits for the framework; the original 2D paper used valid convolutions.
+bottleneck_dropout = 0.5
+
+[task]
+loss = "dc_and_ce"

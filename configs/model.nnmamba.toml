@@ -1,0 +1,15 @@
+[model]
+name = "nnmamba"
+source_root = ""
+num_classes = 4
+num_modalities = 4
+img_size = [128, 128, 128]
+channels = 32
+blocks = 3
+strict_img_size = true
+
+[task]
+loss = "dc_and_ce"
+
+[data]
+batch_size = 1

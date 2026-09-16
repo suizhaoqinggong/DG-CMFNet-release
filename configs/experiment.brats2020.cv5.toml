@@ -1,0 +1,58 @@
+[experiment]
+name = "brats2020-cv5-fold{fold}-segmentation"
+threshold = 0.5
+class_names = ["background", "NCR_NET", "ED", "ET"]
+
+[data]
+adapter = "brats"
+root_dir = "data/brats2020"
+batch_size = 2
+num_workers = 4
+pin_memory = true
+persistent_workers = true
+prefetch_factor = 2
+val_ratio = 0.0
+test_ratio = 0.0
+train_ids_file = "configs/splits/brats2020_cv5_fold{fold}_train_ids.txt"
+val_ids_file = "configs/splits/brats2020_cv5_fold{fold}_val_ids.txt"
+test_ids_file = "configs/splits/brats2020_cv5_fold{fold}_test_ids.txt"
+crop_to_brain = true
+normalize = true
+use_preprocessed = true
+preprocessed_dir = "data/brats2020"
+seed = 37
+augment_train = true
+crop_size = [128, 128, 128]
+cache_in_memory = false
+data_format = "npy"
+
+[task]
+name = "segmentation"
+loss = "uahl"
+loss_lambda_alpha = 1.0
+loss_lambda_beta = 0.05
+loss_gamma = 2.0
+
+[optimizer]
+name = "adam"
+lr = 0.0005
+weight_decay = 1e-5
+
+[trainer]
+epochs = 200
+patience = 200
+device = "cuda"
+amp = false
+grad_clip_norm = 1.0
+lr_scheduler = true
+lr_scheduler_factor = 0.5
+lr_scheduler_patience = 10
+
+[metrics.params.brats_dice]
+
+[checkpoint]
+monitor = "val_brats_dice_mean"
+mode = "max"
+
+[output]
+root_dir = "runs"

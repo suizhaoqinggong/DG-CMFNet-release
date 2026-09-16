@@ -1,0 +1,25 @@
+[model]
+name = "segmamba_v2"
+num_classes = 4
+num_modalities = 4
+
+# Original BraTS SegMamba-V2 settings. Keep img_size aligned with the data
+# adapter's crop_size; all three dimensions must be divisible by 16.
+source_root = ""
+img_size = [128, 128, 128]
+strict_img_size = true
+depths = [2, 2, 2, 2]
+feat_size = [48, 96, 192, 384]
+hidden_size = 768
+drop_path_rate = 0.0
+layer_scale_init_value = 1e-6
+norm_name = "instance"
+conv_block = true
+res_block = true
+
+[data]
+batch_size = 1
+
+[task]
+# The official BraTS training script uses multiclass cross entropy.
+loss = "ce"

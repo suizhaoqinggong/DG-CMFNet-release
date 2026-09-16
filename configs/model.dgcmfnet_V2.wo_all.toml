@@ -1,0 +1,15 @@
+[model]
+name = "dgcmfnet_V2"
+num_classes = 4
+num_modalities = 4
+base_ch = 8
+norm_affine = false
+align_corners = true
+
+# Ablation: disable FG-GIM, CG-GFM, and FDFM.
+fg_gim_stages = []
+use_cg_gfm = false
+skip_fusion = "concat"
+dropout = 0.0
+unet_bottleneck_dropout = 0.2
+decoder_type = "standard"

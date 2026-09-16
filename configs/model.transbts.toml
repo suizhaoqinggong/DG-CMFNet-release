@@ -1,0 +1,19 @@
+[model]
+name = "transbts"
+num_classes = 4
+num_modalities = 4
+source_root = ""
+img_size = 128
+patch_size = 8
+embedding_dim = 512
+num_heads = 8
+num_layers = 4
+hidden_dim = 4096
+dropout_rate = 0.1
+attn_dropout_rate = 0.1
+conv_patch_representation = true
+positional_encoding_type = "learned"
+strict_img_size = true
+
+[task]
+loss = "transbts_softmax_dice"

@@ -1,0 +1,7 @@
+[model]
+name = "shared_encoder_concat_unet"
+num_classes = 4
+num_modalities = 4
+base_ch = 8
+norm_affine = false
+align_corners = true
