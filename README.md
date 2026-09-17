@@ -6,7 +6,7 @@ This repository contains the model and the training code needed to run the paper
 
 ## Requirements
 
-- Python 3.9 only (`requires-python = ">=3.9,<3.10"`)
+- Python 3.9
 - A CUDA GPU is recommended for the paper training setup
 - BraTS 2020 / BraTS 2023 training data from the official challenge organizers
 
