@@ -47,48 +47,6 @@ class SegmentationTask(Task):
             from framework.losses.uahl import SoftmaxFocalLoss
 
             self.loss_fn = SoftmaxFocalLoss(num_classes=num_classes, gamma=loss_gamma)
-        elif loss == "dc_and_ce":
-            from framework.losses.dc_and_ce import DcAndCeLoss
-
-            self.loss_fn = DcAndCeLoss()
-        elif loss == "brats_region_dice":
-            from framework.losses.brats_original import BraTSRegionDiceLoss
-
-            self.loss_fn = BraTSRegionDiceLoss()
-        elif loss == "brats_edice":
-            from framework.losses.brats_original import BraTSEDiceLoss
-
-            self.loss_fn = BraTSEDiceLoss()
-        elif loss in {"bce_focal", "multilabel_focal"}:
-            from framework.losses.brats_original import MultiLabelBCEFocalLoss
-
-            self.loss_fn = MultiLabelBCEFocalLoss(
-                num_classes=num_classes,
-                gamma=loss_gamma,
-                balance_param=loss_balance_param,
-            )
-        elif loss == "transbts_softmax_dice":
-            from framework.losses.brats_original import TransBTSSoftmaxDiceLoss
-
-            self.loss_fn = TransBTSSoftmaxDiceLoss()
-        elif loss == "transbts_softmax_dice2":
-            from framework.losses.brats_original import TransBTSSoftmaxDiceLoss
-
-            # Mirrors TransBTS softmax_dice2: supervise background as well as
-            # the three tumor classes to prevent foreground-channel collapse.
-            self.loss_fn = TransBTSSoftmaxDiceLoss(classes=(0, 1, 2, 3))
-        elif loss == "brats_sigmoid_region_dice":
-            from framework.losses.brats_original import BraTSSigmoidRegionDiceLoss
-
-            self.loss_fn = BraTSSigmoidRegionDiceLoss()
-        elif loss == "swinbts_dice_ce":
-            from framework.losses.brats_original import SwinBTSDiceCELoss
-
-            self.loss_fn = SwinBTSDiceCELoss()
-        elif loss == "slim_unetr_focal_dice":
-            from framework.losses.brats_original import SlimUNETRFocalDiceLoss
-
-            self.loss_fn = SlimUNETRFocalDiceLoss(num_classes=num_classes, gamma=loss_gamma)
         else:
             raise ValueError(f"Unknown segmentation loss: {loss}")
 

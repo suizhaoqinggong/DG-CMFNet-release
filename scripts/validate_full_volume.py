@@ -695,12 +695,6 @@ def main() -> int:
         raise FileNotFoundError(f"Missing config snapshot: {config_path}")
 
     config = load_toml(config_path)
-    model_config = config.get("model", {})
-    if model_config.get("name") == "unet" and "channel_multipliers" in model_config:
-        # Older comparison runs used the configurable UNet3D under the
-        # registry name "unet". That name now points to PaperUNet3D.
-        model_config["name"] = "unet3d"
-        print("Using legacy UNet3D registry mapping for this checkpoint")
     if args.model_crop_size is not None:
         config.setdefault("model", {})["crop_size"] = list(args.model_crop_size)
     bundle = build_component_bundle(config, create_default_registries())
