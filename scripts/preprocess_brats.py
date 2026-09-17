@@ -25,15 +25,16 @@ from scipy.ndimage import zoom
 
 MODALITY_KEYS = ["t1", "t1ce", "t2", "flair"]
 
-# Possible file suffixes per modality — tried in order (supports BraTS MEN + GLI naming)
+# Possible file suffixes per modality — tried in order (supports BraTS MEN + GLI naming).
+# BraTS 2020 is often distributed as uncompressed .nii; later challenges use .nii.gz.
 _MODALITY_SUFFIXES: dict[str, list[str]] = {
-    "t1": ["t1.nii.gz", "t1n.nii.gz"],
-    "t1ce": ["t1ce.nii.gz", "t1c.nii.gz"],
-    "t2": ["t2.nii.gz", "t2w.nii.gz"],
-    "flair": ["flair.nii.gz", "t2f.nii.gz"],
+    "t1": ["t1.nii.gz", "t1n.nii.gz", "t1.nii", "t1n.nii"],
+    "t1ce": ["t1ce.nii.gz", "t1c.nii.gz", "t1ce.nii", "t1c.nii"],
+    "t2": ["t2.nii.gz", "t2w.nii.gz", "t2.nii", "t2w.nii"],
+    "flair": ["flair.nii.gz", "t2f.nii.gz", "flair.nii", "t2f.nii"],
 }
 
-_SEG_SUFFIXES = ["truth.nii.gz", "seg.nii.gz"]
+_SEG_SUFFIXES = ["truth.nii.gz", "seg.nii.gz", "truth.nii", "seg.nii"]
 LABEL_REMAP = {0: 0, 1: 1, 2: 2, 3: 3, 4: 3}
 
 
@@ -178,7 +179,9 @@ def main() -> None:
         print(f"ERROR: input directory does not exist: {input_dir}")
         sys.exit(1)
 
-    case_dirs = sorted([d for d in input_dir.iterdir() if d.is_dir()])
+    case_dirs = sorted(
+        d for d in input_dir.iterdir() if d.is_dir() and not d.name.startswith(".")
+    )
     if not case_dirs:
         print(f"ERROR: no case directories found in {input_dir}")
         sys.exit(1)

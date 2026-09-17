@@ -32,7 +32,7 @@ uv run python scripts/preprocess_brats.py \
   --output data/brats2023
 ```
 
-That script writes one `.npz` file per case. The shipped experiment configs currently set `data_format = "npy"`. After using this preprocessor, change that field to `"npz"` in the experiment TOML, or convert the arrays to `.npy` directories yourself.
+The preprocessor accepts both compressed `.nii.gz` and uncompressed `.nii` files (BraTS 2020 is often the latter). It writes one `.npz` file per case. The shipped experiment configs currently set `data_format = "npy"`. After using this preprocessor, change that field to `"npz"` in the experiment TOML, or convert the arrays to `.npy` directories yourself.
 
 Paper configs expect:
 
