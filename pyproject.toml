@@ -10,7 +10,6 @@ readme = "README.md"
 requires-python = ">=3.9,<3.10"
 dependencies = [
     "torch>=2.0",
-    "torchvision>=0.15",
     "tensorboard>=2.14",
     "tomli>=2.0",
     "tomli-w>=1.0",
