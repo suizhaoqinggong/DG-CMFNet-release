@@ -5,5 +5,5 @@ type: software
 authors:
   - family-names: Chen
     given-names: Jiahao
-repository-code: https://github.com/suizhaoqinggong/DG-CMFNet
+repository-code: https://github.com/suizhaoqinggong/DG-CMFNet-release
 license: MIT
