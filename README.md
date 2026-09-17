@@ -16,18 +16,6 @@ Install with [uv](https://github.com/astral-sh/uv). Package downloads use the Ts
 uv sync
 ```
 
-For tests and linting:
-
-```bash
-uv sync --extra dev
-```
-
-To use the official PyPI index instead:
-
-```bash
-uv sync --default-index https://pypi.org/simple
-```
-
 ## Data
 
 BraTS volumes are **not** redistributed here. After you obtain the official training data, preprocess it with the project environment:
@@ -61,24 +49,3 @@ uv run framework train \
 
 BraTS 2023 uses `configs/experiment.brats.toml` with the same model config.
 
-The 2020 experiment file currently sets `loss = "uahl"` with `loss_lambda_alpha = 0.0` and `loss_lambda_beta = 0.00`, so the UAHL extra terms are off. The 2023 experiment file uses `loss_lambda_alpha = 1.0` and `loss_lambda_beta = 0.05`.
-
-## Full-volume validation
-
-After training, evaluate the run directory (defaults to the `val` split and `checkpoints/best.pt`):
-
-```bash
-uv run python scripts/validate_full_volume.py --run-dir runs/<your-run>
-```
-
-Use `--split test` for the BraTS 2020 holdout IDs.
-
-## Tests
-
-```bash
-uv run pytest
-```
-
-## Citation
-
-If you use this code, please cite the DG-CMFNet paper (update the bibliographic details after publication). See `CITATION.cff`.
