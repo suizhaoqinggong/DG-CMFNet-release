@@ -46,3 +46,8 @@ line-length = 120
 select = ["E", "F", "W", "I"]
 ignore = ["E501"]
 
+[[tool.uv.index]]
+name = "tuna"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+

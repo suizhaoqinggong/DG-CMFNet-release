@@ -10,10 +10,16 @@ This repository contains the model and the training code needed to run the paper
 - CUDA GPU recommended for the paper training setup
 - BraTS 2020 / BraTS 2023 data obtained from the official challenge organizers
 
-Install with [uv](https://github.com/astral-sh/uv):
+Install with [uv](https://github.com/astral-sh/uv). Package downloads use the Tsinghua PyPI mirror by default:
 
 ```bash
 uv sync --extra dev
+```
+
+To use the official PyPI index instead:
+
+```bash
+uv sync --extra dev --default-index https://pypi.org/simple
 ```
 
 ## Data
